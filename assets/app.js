@@ -28,7 +28,8 @@ function timeBlocks(data) {
         let hour = i + 9;
         if (hour > 12) {
             hour = hour - 12;
-        }
+        };
+        const isPastTime = dayjs().hour() > hour;
         const rowEl = document.createElement('div');
         rowEl.classList.add('row');
         const timeEl = document.createElement('div');
@@ -48,6 +49,11 @@ function timeBlocks(data) {
         saveBtn.addEventListener('click', function() {
             localStorage.setItem(`task-${i}`, taskEl.textContent);
         });
+        if (isPastTime) {
+            rowEl.classList.add('past');
+        } else {
+            rowEl.classList.add('time-block');
+        }
         data.appendChild(rowEl);
         rowEl.appendChild(timeEl);
         rowEl.appendChild(taskEl);
