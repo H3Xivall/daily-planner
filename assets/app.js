@@ -9,6 +9,7 @@ const headerEl = document.getElementById('header');
 const footerEl = document.getElementById('footer');
 const timeEl = document.getElementById('date-time');
 const intervalID = setInterval(reloadPage, 60000);
+let unSaved = false;
 
 // Event Listeners
 document.addEventListener('DOMContentLoaded', init);
@@ -34,12 +35,16 @@ function timeBlocks(data) {
         rowEl.classList.add('row');
         const timeEl = document.createElement('div');
         timeEl.classList.add('col-2');
+        timeEl.classList.add('hour');
         timeEl.textContent = `${hour}:00`;
         const taskEl = document.createElement('div');
         taskEl.classList.add('col-8');
         taskEl.classList.add('task');
         taskEl.setAttribute('id', `task-${i}`);
         taskEl.setAttribute('contenteditable', 'true');
+        taskEl.addEventListener('click', function() {
+            unSaved = true;
+        });
         taskEl.textContent = localStorage.getItem(`task-${i}`);
         const saveEl = document.createElement('div');
         saveEl.classList.add('col-2');
@@ -48,6 +53,7 @@ function timeBlocks(data) {
         saveBtn.textContent = 'Save';
         saveBtn.addEventListener('click', function() {
             localStorage.setItem(`task-${i}`, taskEl.textContent);
+            unSaved = false;
         });
         if (isPastTime) {
             rowEl.classList.add('past');
@@ -70,6 +76,9 @@ function timeBlocks(data) {
     footerEl.appendChild(clearBtn);
 };
 function reloadPage() {
-    location.reload();
-    console.log('Page Reloaded');
+    if (unSaved) {
+        console.log('Unsaved Changes');
+    } else {
+        location.reload();
+    };
 }

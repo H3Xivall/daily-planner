@@ -1,7 +1,8 @@
 body {
-    background-color:darkblue;
+    background-color: darkblue;
     color: beige;
 }
+
 header, main, footer {
     margin: 0.25em;
     display: flex;
@@ -9,6 +10,7 @@ header, main, footer {
     justify-content: center;
     max-width: 100%;
 }
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -16,22 +18,56 @@ header, main, footer {
     height: 100px;
     border-radius: 10px;
     margin: 0.25em;
+    align-content: center;
+    justify-content: center;
 }
+
 .col-2 {
     display: inline;
     min-width: 10%;
+    background-color:antiquewhite;
 }
+
 .col-8 {
     display: inline;
     min-width: 80%;
+    max-width: 80%;
+    overflow: auto;
+    height: 100%;
 }
+
 .past {
-    background-color: gray;
+    background-color: darkslategray;
     border: 5px solid red;
     color: black;
 }
+
 .time-block {
     background-color:beige;
     border: 5px solid green;
     color: black;
+}
+
+.saveBtn {
+    background-color: blue;
+    border: 1px solid black;
+    color: white;
+    height: 100%;
+    width: 100%;
+}
+
+.hour {
+    text-align: center;
+    height: 100%;
+    font-size: 2em;
+}
+
+header {
+    border-bottom: 5px solid antiquewhite;
+    background-color: darkslategray;
+}
+
+.task {
+    font-size: 1.5em;
+    height: 100%;
 }
