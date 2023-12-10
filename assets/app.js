@@ -27,9 +27,6 @@ function init() {
 function timeBlocks(data) {
     for (let i = 0; i < 9; i++) {
         let hour = i + 9;
-        if (hour > 12) {
-            hour = hour - 12;
-        };
         const isPastTime = dayjs().hour() > hour;
         const rowEl = document.createElement('div');
         rowEl.classList.add('row');
